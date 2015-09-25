@@ -1,16 +1,9 @@
-- name: Install gems
-  gem:
-    user_install: no
-    name: "{{ item }}"
-    repository: https://rubygems.org
-    include_dependencies: yes
-    state: present
-  with_items:
-    - sensu-plugins-disk-checks
+- name: clone community-plugins
+  git: repo=https://github.com/sensu-plugins/sensu-plugins-disk-checks.git depth=1
+    dest=/opt/sensu-disk-checks/
+    version="{{ sensu_disk_checks_version }}" update=no
 
-- name: symlink disk checks
+- name: symlink metrics-disk-usage
   file: state=link
-    path=/etc/sensu/extensions/checks/{{ item }}
-    src=/usr/local/bin/{{ item }}
-  with_items:
-    - check-disk-usage.rb
+    path=/etc/sensu/extensions/checks/metrics-disk-usage.rb
+    src=/opt/sensu-disk-checks/bin/metrics-disk-usage.rb
