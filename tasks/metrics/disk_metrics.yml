@@ -5,5 +5,5 @@
 
 - name: symlink metrics-disk-usage
   file: state=link
-    path=/etc/sensu/extensions/checks/metrics-disk-usage.rb
+    path=/etc/sensu/plugins/metrics-disk-usage.rb
     src=/opt/sensu-disk-checks/bin/metrics-disk-usage.rb
