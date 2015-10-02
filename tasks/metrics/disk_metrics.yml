@@ -4,6 +4,15 @@
     version="{{ sensu_disk_checks_version }}" update=no
 
 - name: symlink metrics-disk-usage
-  file: state=link
-    path=/etc/sensu/plugins/metrics-disk-usage.rb
-    src=/opt/sensu-disk-checks/bin/metrics-disk-usage.rb
+  file:
+    state: link
+    path: "/etc/sensu/plugins/{{ item }}"
+    src: "/opt/sensu-disk-checks/bin/{{ item }}"
+  with_items:
+    - check-disk-usage.rb
+    - check-fstab-mounts.rb
+    - check-smart.rb
+    - check-smart-status.rb
+    - metrics-disk-capacity.rb
+    - metrics-disk.rb
+    - metrics-disk-usage.rb
