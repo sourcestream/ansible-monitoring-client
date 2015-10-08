@@ -3,8 +3,10 @@ standalone_checks: {}
 client_settings: {}
 system_profile: false
 disk_metrics: false
+process_metrics: false
 sensu_system_profile_version: ab29feda43bafcf4207ef4ac238214cf70e800e9 #master @ 4.05.2015
 sensu_disk_checks_version: fc0b8e5b75d42369f74b424234ea25d3a41ef12b #master @ 25.09.2015
+sensu_process_checks_version: 9e5a9f9ea78db5c7be2b538f3c6562b567fb926f #master @ 08.10.2015
 monitoring_client_name: "{{ ansible_hostname }}"
 monitoring_client_address: "{{ ansible_default_ipv4['address'] }}"
 monitoring_port: 5671

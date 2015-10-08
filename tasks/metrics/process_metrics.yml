@@ -1,0 +1,19 @@
+- name: clone community-plugins
+  git: repo=https://github.com/sensu-plugins/sensu-plugins-process-checks.git depth=1
+    dest=/opt/sensu-process-checks/
+    version="{{ sensu_process_checks_version }}" update=no
+
+- name: symlink checks
+  file:
+    state: link
+    path: "/etc/sensu/plugins/{{ item }}"
+    src: "/opt/sensu-process-checks/bin/{{ item }}"
+  with_items:
+    - check-cmd.rb
+    - check-process-restart.rb
+    - check-process.rb
+    - check-threads-count.rb
+    - metrics-per-process.py
+    - metrics-process-status.rb
+    - metrics-process-uptime.sh
+    - metrics-processes-threads-count.rb

@@ -40,3 +40,7 @@
 - include: metrics/disk_metrics.yml
   when: disk_metrics
   notify: restart sensu client
+
+- include: metrics/process_metrics.yml
+  when: process_metrics
+  notify: restart sensu client
