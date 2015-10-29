@@ -44,3 +44,7 @@
 - include: metrics/process_metrics.yml
   when: process_metrics
   notify: restart sensu client
+
+- include: metrics/memory_metrics.yml
+  when: memory_metrics
+  notify: restart sensu client

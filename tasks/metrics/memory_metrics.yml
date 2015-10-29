@@ -1,0 +1,30 @@
+- name: clone community-plugins
+  git: repo=https://github.com/sensu-plugins/sensu-plugins-memory-checks.git depth=1
+    dest=/opt/sensu-memory-checks/
+    version="{{ sensu_memory_checks_version }}" update=no
+
+- name: symlink checks
+  file:
+    state: link
+    path: "/etc/sensu/plugins/{{ item }}"
+    src: "/opt/sensu-memory-checks/bin/{{ item }}"
+  with_items:
+    - check-memory-percent.rb
+    - check-memory-percent.sh
+    - check-memory.rb
+    - check-memory.sh
+    - check-ram.rb
+    - check-swap-percent.rb
+    - check-swap-percent.sh
+    - check-swap.rb
+    - check-swap.sh
+    - metrics-memory-percent.rb
+    - metrics-memory.rb
+
+- name: Install checks dependencies
+  gem:
+    name: "{{ item }}"
+    executable: /opt/sensu/embedded/bin/gem
+    user_install: no
+  with_items:
+    - vmstat
