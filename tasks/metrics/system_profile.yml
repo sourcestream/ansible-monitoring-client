@@ -1,5 +1,5 @@
 - name: clone community-plugins
-  git: repo=https://github.com/synchrone/sensu-plugins-system-profile.git depth=1
+  git: repo=https://github.com/synchrone/sensu-plugins-system-profile.git
     dest=/opt/sensu-system-profile/
     version="{{ sensu_system_profile_version }}" update=no
 

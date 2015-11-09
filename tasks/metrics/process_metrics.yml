@@ -1,5 +1,5 @@
 - name: clone community-plugins
-  git: repo=https://github.com/sensu-plugins/sensu-plugins-process-checks.git depth=1
+  git: repo=https://github.com/sensu-plugins/sensu-plugins-process-checks.git
     dest=/opt/sensu-process-checks/
     version="{{ sensu_process_checks_version }}" update=no
 

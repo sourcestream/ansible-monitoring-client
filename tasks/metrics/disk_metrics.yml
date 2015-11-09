@@ -1,5 +1,5 @@
 - name: clone community-plugins
-  git: repo=https://github.com/sensu-plugins/sensu-plugins-disk-checks.git depth=1
+  git: repo=https://github.com/sensu-plugins/sensu-plugins-disk-checks.git
     dest=/opt/sensu-disk-checks/
     version="{{ sensu_disk_checks_version }}" update=no
 

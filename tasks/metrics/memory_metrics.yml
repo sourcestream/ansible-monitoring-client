@@ -1,5 +1,5 @@
 - name: clone community-plugins
-  git: repo=https://github.com/sensu-plugins/sensu-plugins-memory-checks.git depth=1
+  git: repo=https://github.com/sensu-plugins/sensu-plugins-memory-checks.git
     dest=/opt/sensu-memory-checks/
     version="{{ sensu_memory_checks_version }}" update=no
 
