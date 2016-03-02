@@ -146,7 +146,6 @@ dependencies:
     sensu_server_rabbitmq_insecure: true
     sensu_server_rabbitmq_hostname: "{{ monitoring_hostname }}"
     sensu_server_rabbitmq_port: "{{ monitoring_port }}"
-    sensu_server_rabbitmq_hostname: "{{ monitoring_hostname }}"
     sensu_server_rabbitmq_user: "{{ monitoring_user }}"
     sensu_server_rabbitmq_password: "{{ monitoring_password }}"
     sensu_server_rabbitmq_vhost: "{{ monitoring_vhost   }}"
