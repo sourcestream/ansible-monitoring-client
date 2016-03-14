@@ -2,12 +2,14 @@
   git: repo=https://github.com/sensu-plugins/sensu-plugins-disk-checks.git
     dest=/opt/sensu-disk-checks/
     version="{{ sensu_disk_checks_version }}" update=no
+  register: disk_metrics_clone
 
 - name: symlink checks
   file:
     state: link
     path: "/etc/sensu/plugins/{{ item }}"
     src: "/opt/sensu-disk-checks/bin/{{ item }}"
+  when: disk_metrics_clone.changed
   with_items:
     - check-disk-usage.rb
     - check-fstab-mounts.rb
@@ -22,5 +24,6 @@
     name: "{{ item }}"
     executable: /opt/sensu/embedded/bin/gem
     user_install: no
+  when: disk_metrics_clone.changed
   with_items:
     - sys-filesystem

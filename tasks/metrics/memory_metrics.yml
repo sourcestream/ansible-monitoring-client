@@ -2,12 +2,14 @@
   git: repo=https://github.com/sensu-plugins/sensu-plugins-memory-checks.git
     dest=/opt/sensu-memory-checks/
     version="{{ sensu_memory_checks_version }}" update=no
+  register: memory_metrics_clone
 
 - name: symlink checks
   file:
     state: link
     path: "/etc/sensu/plugins/{{ item }}"
     src: "/opt/sensu-memory-checks/bin/{{ item }}"
+  when: memory_metrics_clone.changed
   with_items:
     - check-memory-percent.rb
     - check-memory-percent.sh
